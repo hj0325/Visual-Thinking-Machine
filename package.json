@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:web": "next dev",
+    "dev:api": "python3 -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000",
+    "dev": "concurrently -n web,api -c \"#3b82f6,#22c55e\" \"yarn dev:web\" \"yarn dev:api\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -15,12 +17,9 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "concurrently": "^9.1.2",
     "eslint": "^9",
     "eslint-config-next": "16.1.2",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4"
   }
 }

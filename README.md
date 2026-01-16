@@ -1,22 +1,40 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Getting Started (Thinking Machine)
 
-First, run the development server:
+### 1) One-time setup
+
+- **Node deps**:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Python deps** (in your preferred environment):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+python3 -m pip install -r backend/requirements.txt
+```
+
+- **Environment variables** (create `.env.local` in repo root; it's gitignored):
+
+```bash
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4o
+OPENAI_TEMPERATURE=0.2
+```
+
+### 2) Run (single command)
+
+This starts **Next.js + FastAPI** together:
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) and chat from the home page UI.
+
+The backend runs at `http://127.0.0.1:8000` and is proxied through Next routes (`/api/chat`, `/api/feedback`, `/api/health`).
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
